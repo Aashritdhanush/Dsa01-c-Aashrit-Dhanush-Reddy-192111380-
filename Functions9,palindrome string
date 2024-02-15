@@ -1,25 +1,39 @@
 #include <iostream>
-#include <cmath> 
-using namespace std;
-double calculateCircleArea(double radius) 
-{
-    const double pi = 3.14159; 
-    return pi * pow(radius, 2);
+#include <cctype> 
+bool isPalindrome(const std::string& str) {
+    
+    std::string cleanedStr;
+    for (char c : str) {
+        if (std::isalnum(c)) {
+            cleanedStr += std::tolower(c);
+        }
+    }
+
+    int left = 0;
+    int right = cleanedStr.length() - 1;
+
+    while (left < right) {
+        if (cleanedStr[left] != cleanedStr[right]) {
+            return false;
+        }
+        ++left;
+        --right;
+    }
+
+    return true;
 }
 
 int main() {
-    double radius;
+    std::string inputString;
 
-    cout << "Enter the radius of the circle: ";
-    cin >> radius;
+    std::cout << "Enter a string: ";
+    std::getline(std::cin, inputString);
 
-    if (radius < 0) 
-    {
-        cout << "Radius cannot be negative. Please enter a non-negative value." << std::endl;
-        return 1; 
+    if (isPalindrome(inputString)) {
+        std::cout << "\"" << inputString << "\" is a palindrome." << std::endl;
+    } else {
+        std::cout << "\"" << inputString << "\" is not a palindrome." << std::endl;
     }
-    double area = calculateCircleArea(radius);
-    cout << "The area of the circle with radius " << radius << " is: " << area << std::endl;
 
     return 0;
 }
