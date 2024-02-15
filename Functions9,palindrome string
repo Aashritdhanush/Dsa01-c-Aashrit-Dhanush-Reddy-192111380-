@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath> 
+using namespace std;
+double calculateCircleArea(double radius) 
+{
+    const double pi = 3.14159; 
+    return pi * pow(radius, 2);
+}
+
+int main() {
+    double radius;
+
+    cout << "Enter the radius of the circle: ";
+    cin >> radius;
+
+    if (radius < 0) 
+    {
+        cout << "Radius cannot be negative. Please enter a non-negative value." << std::endl;
+        return 1; 
+    }
+    double area = calculateCircleArea(radius);
+    cout << "The area of the circle with radius " << radius << " is: " << area << std::endl;
+
+    return 0;
+}
